@@ -1,5 +1,5 @@
-create table ticket (
-   id serial primary key,
+create table ticket ( !-- will be generated after webhook call from payment api
+   -id serial primary key,
    code varchar(30),
    idEvent integer,
    idseat integer,
@@ -51,7 +51,7 @@ create table hall (
 );
 
 create table venue (
-   id serial primary key,
+   -id serial primary key,
    idOrg integer,
    location varchar(50), !-- url to html file containing map
    name varchar(20),
