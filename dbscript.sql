@@ -16,7 +16,7 @@ create table ticketBuyer (
    email varchar(30),
    birthYear integer, 
    creationDate Date,
-   subscribedTO
+   subscribedTO integer
 );
 
 create table eventOrganizer(
@@ -30,60 +30,63 @@ create table eventOrganizer(
 
 create table event (
    id serial primary key,
-   eventName varchar(),
-   description,
-   organizer,
-   startDate,
-   endDate,
-   startTime,
-   endTime,
-   searchTags,
-   venue
+   eventName varchar(20),
+   description varchar(100),
+   idOrganizer integer,
+   startDate date,
+   endDate date,
+   startTime time,
+   endTime time,
+   searchTag varchar(10),
+   idvenue integer,
+   type varchar(20),
+   status varchar(20)
 );
 
 create table hall (
    id serial primary key,
-   capacity,
-   hallName,
-   venue
+   capacity integer,
+   hallName varchar(20),
+   idVenue integer
 );
 
 create table venue (
    id serial primary key,
-   idOrg,
-   location,
-   name,
-   locationDescription
+   idOrg integer,
+   location varchar(50), !-- url to html file containing map
+   name varchar(20),
+   locationDescription varchar(50)
 );
 
-create table seatingChart (
+create table seatingChart ( !-- when should it be created?
    id serial primary key,
-   idHall,
-   numOfSeats,
-   seatingArrangment
+   idHall integer,
+   numOfSeats integer,
+   seatingArrangment 
 );
 
 create table seat (
-   seatNum,
-   idChart,
-   aisleNum,
-   reserved
+   seatNum varchar(5),
+   idChart integer,
+   aisleNum varchar(2),
+   rowNum varchar(3),
+   reserved boolean
 );
 
 create table validator (
    id serial primary key,
-   idOrg,
-   key,
-   code
+   idOrg integer,
+   key varchar(30),
+   code 
 );
 
 create table admin (
    id serial primary key,
-   firstName,
-   lastName,
-   phoneNum,
-   email,
-   creationDate
+   firstName varchar(20),
+   lastName varchar(20),
+   phoneNum integer,
+   email varchar(30),
+   creationDate date
 );
 
 -create table eventReport (
